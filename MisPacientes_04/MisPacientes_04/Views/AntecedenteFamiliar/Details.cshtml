@@ -1,0 +1,42 @@
+﻿@model MisPacientes_04.Models.AntecedenteFamiliar
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AntecedenteFamiliar</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.E_Cardios)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.E_Cardios)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.E_Respiratorias)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.E_Respiratorias)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DescripcionAntecedentes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DescripcionAntecedentes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Anamnesis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Anamnesis.MotivoConsulta)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

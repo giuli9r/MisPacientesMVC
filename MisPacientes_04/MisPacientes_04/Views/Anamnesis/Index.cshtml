@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MisPacientes_04.Models.Anamnesis>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="alert alert-warning fs-1 text" role="alert">
+    Anamnesis
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-secondary d-block mx-auto btn-lg">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotivoConsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnfermedadActual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente)
+            </th>
+            <th></th>
+            <th>Examen fisico</th>
+            <th>Antecedentes Familiares </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotivoConsulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnfermedadActual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.PacienteNombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+            <td>
+                    <a asp-controller="ExamenFisico" asp-action="Create" asp-route-id="" class=" btn btn-secondary">Crear</a>
+                    <a asp-controller="ExamenFisico" asp-action="Index" asp-route-id="@item.Id">Ver</a>
+            </td>
+            <td>
+                    <a asp-controller="AntecedenteFamiliar" asp-action="Create" asp-route-id="@item.Id" class="btn btn-secondary" >Crear</a>
+                    <a asp-controller="AntecedenteFamiliar" asp-action="Details" asp-route-id="@item.Id">Ver</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
